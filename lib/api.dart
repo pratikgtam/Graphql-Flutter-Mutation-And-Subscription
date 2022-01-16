@@ -5,7 +5,7 @@ import 'package:grqphql_mutation_subscription/config.dart';
 import 'gql_document.dart';
 
 class ApiClients {
-  Future<String> createCase() async {
+  Future<String> performMutation() async {
     try {
       GraphQLConfig graphQLConfiguration = GraphQLConfig();
       GraphQLClient _client = graphQLConfiguration.client();
@@ -27,7 +27,7 @@ class ApiClients {
     }
   }
 
-  Stream<QueryResult> caseResults(String uuid) {
+  Stream<QueryResult> performSubscription(String uuid) {
     GraphQLConfig graphQLConfiguration = GraphQLConfig();
     GraphQLClient _client = graphQLConfiguration.client();
     Stream<QueryResult> result = _client.subscribe(SubscriptionOptions(

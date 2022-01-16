@@ -20,14 +20,14 @@ class _GraphQlDummyScreenState extends State<GraphQlDummyScreen> {
     return Scaffold(
       body: SafeArea(
         child: FutureBuilder<String>(
-          future: ApiClients().createCase(),
+          future: ApiClients().performMutation(),
           builder: (BuildContext context, AsyncSnapshot snapshot) {
             if (snapshot.hasData) {
               return Column(
                 children: [
                   Text(snapshot.data),
                   StreamBuilder(
-                    stream: ApiClients().caseResults(snapshot.data),
+                    stream: ApiClients().performSubscription(snapshot.data),
                     builder: (context, snapshot) {
                       if (snapshot.hasData) {
                         return Text(snapshot.data.toString());
